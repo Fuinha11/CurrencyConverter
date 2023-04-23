@@ -15,7 +15,7 @@ fun Application.configureStatus() {
                 is MissingParameterException -> call.respondText(text = "The parameter ${cause.parameterName} is missing." , status = HttpStatusCode.BadRequest)
                 is InvalidCurrencyException -> call.respondText(text = "The currency ${cause.currency} is not valid." , status = HttpStatusCode.BadRequest)
                 is NumberFormatException -> call.respondText(text = "Amount must be a valid Integer." , status = HttpStatusCode.BadRequest)
-                is IntegrationException -> call.respondText(text = "" , status = HttpStatusCode.ServiceUnavailable)
+                is IntegrationException -> call.respondText(text = "Conversion Service is Unavailable." , status = HttpStatusCode.ServiceUnavailable)
                 else -> call.respondText(text = "500: $cause" , status = HttpStatusCode.InternalServerError)
             }
         }
